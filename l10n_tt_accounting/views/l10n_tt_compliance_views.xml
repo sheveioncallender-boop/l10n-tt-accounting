@@ -1,0 +1,65 @@
+<odoo>
+    <record id="view_l10n_tt_compliance_list" model="ir.ui.view">
+        <field name="name">l10n.tt.compliance.list</field>
+        <field name="model">l10n.tt.compliance</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="company_id"/>
+                <field name="company_registration_number"/>
+                <field name="bir_number"/>
+                <field name="vat_registration_number"/>
+                <field name="paye_registration_number"/>
+                <field name="nis_employer_number"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_l10n_tt_compliance_form" model="ir.ui.view">
+        <field name="name">l10n.tt.compliance.form</field>
+        <field name="model">l10n.tt.compliance</field>
+        <field name="arch" type="xml">
+            <form string="Trinidad &amp; Tobago Compliance Profile">
+                <header>
+                    <button name="action_open_accounting_setup" type="object" string="Open Accounting Setup" class="btn-secondary"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Trinidad &amp; Tobago Compliance Profile</h1>
+                    </div>
+                    <group>
+                        <group string="Company">
+                            <field name="company_id"/>
+                            <field name="company_registration_number"/>
+                            <field name="business_activity"/>
+                        </group>
+                        <group string="Tax &amp; Statutory">
+                            <field name="bir_number"/>
+                            <field name="vat_registered"/>
+                            <field name="vat_registration_number"/>
+                            <field name="paye_registration_number"/>
+                            <field name="nis_employer_number"/>
+                        </group>
+                    </group>
+                    <group string="Notes">
+                        <field name="notes" nolabel="1"/>
+                    </group>
+                    <separator string="Purpose"/>
+                    <p>
+                        These Trinidad &amp; Tobago compliance details are stored separately from Odoo's core company table.
+                        They will be used later for VAT reports, payroll reports, NIS summaries, PAYE summaries, and TD4-style annual reporting.
+                    </p>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_l10n_tt_compliance" model="ir.actions.act_window">
+        <field name="name">Compliance Profile</field>
+        <field name="res_model">l10n.tt.compliance</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'default_company_id': allowed_company_ids[0]}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create the Trinidad &amp; Tobago compliance profile for this company.</p>
+        </field>
+    </record>
+</odoo>
