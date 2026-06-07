@@ -1,0 +1,49 @@
+<odoo>
+    <record id="res_config_settings_view_form_l10n_tt" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.l10n.tt.safe</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='accounting_localization']" position="after">
+                <block title="Trinidad &amp; Tobago Localization" name="l10n_tt_localization">
+                    <setting string="Trinidad &amp; Tobago Company Setup"
+                             help="Safe setup for country, TTD currency, VAT 12.5%, chart of accounts, journals and bank accounts. This does not replace Odoo or Odoo Mates Accounting.">
+                        <div class="content-group">
+                            <div class="row mt16">
+                                <label for="l10n_tt_country_id" class="col-lg-4 o_light_label"/>
+                                <field name="l10n_tt_country_id"/>
+                            </div>
+                            <div class="row">
+                                <label for="l10n_tt_currency_id" class="col-lg-4 o_light_label"/>
+                                <field name="l10n_tt_currency_id"/>
+                            </div>
+                            <div class="row">
+                                <label for="l10n_tt_enable_vat" class="col-lg-4 o_light_label"/>
+                                <field name="l10n_tt_enable_vat"/>
+                            </div>
+                            <div class="row">
+                                <label for="l10n_tt_default_vat_rate" class="col-lg-4 o_light_label"/>
+                                <field name="l10n_tt_default_vat_rate"/>
+                            </div>
+                            <div class="row mt16">
+                                <button name="action_l10n_tt_open_setup" type="object" string="Open Trinidad Setup" class="btn-primary"/>
+                            </div>
+                        </div>
+                    </setting>
+                    <setting string="Statutory Details">
+                        <div class="content-group">
+                            <div class="row mt16">
+                                <label for="l10n_tt_bir_number" class="col-lg-4 o_light_label"/>
+                                <field name="l10n_tt_bir_number"/>
+                            </div>
+                            <div class="row">
+                                <label for="l10n_tt_vat_number" class="col-lg-4 o_light_label"/>
+                                <field name="l10n_tt_vat_number"/>
+                            </div>
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>
