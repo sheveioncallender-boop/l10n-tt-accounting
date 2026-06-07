@@ -1,0 +1,8 @@
+<odoo>
+    <menuitem id="menu_l10n_tt_root" name="Trinidad &amp; Tobago" parent="account.menu_finance_configuration" sequence="80" groups="account.group_account_user"/>
+    <menuitem id="menu_l10n_tt_setup" name="Accounting Setup" parent="menu_l10n_tt_root" action="action_l10n_tt_setup" sequence="10" groups="account.group_account_user"/>
+    <menuitem id="menu_l10n_tt_compliance" name="Compliance Profile" parent="menu_l10n_tt_root" action="action_l10n_tt_compliance" sequence="15" groups="account.group_account_user"/>
+    <menuitem id="menu_l10n_tt_taxes" name="VAT Taxes" parent="menu_l10n_tt_root" action="account.action_tax_form" sequence="20" groups="account.group_account_user"/>
+    <menuitem id="menu_l10n_tt_accounts" name="Chart of Accounts" parent="menu_l10n_tt_root" action="account.action_account_form" sequence="30" groups="account.group_account_user"/>
+    <menuitem id="menu_l10n_tt_fiscal_positions" name="Fiscal Positions" parent="menu_l10n_tt_root" action="account.action_account_fiscal_position_form" sequence="40" groups="account.group_account_user"/>
+</odoo>
