@@ -1,0 +1,105 @@
+<odoo>
+    <record id="view_l10n_tt_setup_list" model="ir.ui.view">
+        <field name="name">l10n.tt.setup.list</field>
+        <field name="model">l10n.tt.setup</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="company_id"/>
+                <field name="country_id"/>
+                <field name="currency_id"/>
+                <field name="vat_rate"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_l10n_tt_setup_form" model="ir.ui.view">
+        <field name="name">l10n.tt.setup.form</field>
+        <field name="model">l10n.tt.setup</field>
+        <field name="arch" type="xml">
+            <form string="Trinidad &amp; Tobago Accounting Setup">
+                <header>
+                    <button name="action_run_readiness_audit" type="object" string="Run Readiness Audit" class="btn-secondary"/>
+                    <button name="action_apply_basic_setup" type="object" string="Create Missing / Apply Selected Setup" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Trinidad &amp; Tobago Accounting Setup</h1>
+                    </div>
+                    <group>
+                        <group string="Company Defaults">
+                            <field name="company_id"/>
+                            <field name="country_id"/>
+                            <field name="currency_id"/>
+                            <field name="vat_rate"/>
+                        </group>
+                        <group string="Purpose">
+                            <field name="setup_notes" nolabel="1"/>
+                        </group>
+                    </group>
+                    <group string="Safe Setup Options">
+                        <group>
+                            <field name="apply_company_defaults"/>
+                            <field name="apply_chart_accounts"/>
+                            <field name="apply_vat_taxes"/>
+                            <field name="apply_default_taxes"/>
+                        </group>
+                        <group>
+                            <field name="apply_journals"/>
+                            <field name="apply_bank_accounts"/>
+                            <field name="apply_fiscal_positions"/>
+                            <field name="apply_accounting_defaults"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Readiness Audit">
+                            <group>
+                                <field name="readiness_status" readonly="1"/>
+                                <field name="readiness_summary" nolabel="1" readonly="1" placeholder="Click Run Readiness Audit to check Trinidad setup status."/>
+                            </group>
+                        </page>
+                        <page string="Bank Accounts">
+                            <group>
+                                <p>Select the local bank accounts you want created during setup. The module will create matching bank journals and chart of account entries automatically.</p>
+                            </group>
+                            <field name="bank_line_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="bank_key"/>
+                                    <field name="custom_bank_name"/>
+                                    <field name="account_type"/>
+                                    <field name="account_number"/>
+                                    <field name="branch_name"/>
+                                    <field name="currency_id"/>
+                                    <field name="account_id" readonly="1"/>
+                                    <field name="journal_id" readonly="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Ready Setup">
+                            <group>
+                                <p>Can set company country and fiscal country to Trinidad &amp; Tobago only when selected.</p>
+                                <p>Sets TTD as the company currency with TT$ symbol.</p>
+                                <p>Can set VAT 12.5% as default sales and purchase tax only when selected.</p>
+                                <p>Creates Trinidad-oriented accounts, VAT taxes, journals, fiscal positions, and banks only through the selected options.</p>
+                            </group>
+                        </page>
+                        <page string="Compatibility">
+                            <group>
+                                <p>This module does not replace Odoo Mates Accounting. It configures Trinidad &amp; Tobago accounting defaults on top of it.</p>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_l10n_tt_setup" model="ir.actions.act_window">
+        <field name="name">Trinidad &amp; Tobago Accounting Setup</field>
+        <field name="res_model">l10n.tt.setup</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create or refresh your Trinidad &amp; Tobago accounting setup.</p>
+        </field>
+    </record>
+</odoo>
